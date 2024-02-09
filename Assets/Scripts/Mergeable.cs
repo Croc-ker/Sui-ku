@@ -5,44 +5,40 @@ using UnityEngine;
 
 public class Mergeable : MonoBehaviour
 {
-    private int count = 0;
-    private bool dropped = false;
-    Rigidbody2D rb;
+    //this class handles what happens when shapes touch (send stuff to the GM) and control when they are dropped through inputs.
+    [SerializeField] FloatVariable Timer;
+    [SerializeField] FloatVariable Delay;
+
+    public bool dropped;
+    [SerializeField] public FloatVariable spawnXPos;
+    [SerializeField] public Dropper dropper;
+    private Rigidbody2D rb;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
-        if (dropped)
+        if (dropped) return;
+
+        transform.position = Vector2.Lerp(transform.position, new Vector2(spawnXPos, transform.position.y), .05f);
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
+            rb.gravityScale = 1;
             dropped = true;
-        }
-        else
-        {
-            dropped = false;
-        }
-        if (!dropped)
-        {
-            transform.position = Dropper.pos + new Vector2(0, -1);
-            rb.gravityScale = 0;
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                dropped = true;
-                rb.gravityScale = 1;
-            }
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == this.tag)
-        {
-            count++;
-            if (count == 1)
-            {
-                Destroy(gameObject);
-            }
         }
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (gameObject.tag == collision.gameObject.tag)
+        {
+            if (!dropped) return;
+            Debug.Log("ATTEMPTING MERGE");
+            //dropper.addToMerges(gameObject);
+            Dropper.shapeMergeList.Add(gameObject);
+        }
+    }
 }

@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 351021411608759094}
   - component: {fileID: 5408529349226642868}
-  - component: {fileID: 2048013459906192527}
-  - component: {fileID: 4157024529310765345}
+  - component: {fileID: -5656194957151965256}
+  - component: {fileID: 695399631103465312}
   - component: {fileID: 1937893541544769121}
-  - component: {fileID: -2816848208752653928}
+  - component: {fileID: -7317916861826094652}
   m_Layer: 0
-  m_Name: 4
-  m_TagString: 4
+  m_Name: 9
+  m_TagString: 9
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.70818686, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.12}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 0.87272733}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.5019608, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2048013459906192527
+--- !u!58 &-5656194957151965256
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,8 +122,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!50 &4157024529310765345
+  m_Radius: 0.49999997
+--- !u!50 &695399631103465312
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   dropped: 0
   spawnXPos: {fileID: 11400000, guid: 2e463b287ecaf8c4dbdab093c5b2e763, type: 2}
   dropper: {fileID: 6142544672552687784, guid: 317e8437d9a3f8b4fb788f450353ab69, type: 3}
---- !u!114 &-2816848208752653928
+--- !u!114 &-7317916861826094652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
