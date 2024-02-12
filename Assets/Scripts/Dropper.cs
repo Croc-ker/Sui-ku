@@ -60,11 +60,14 @@ public class Dropper : MonoBehaviour
     {
         if (shapeMergeList.Count != 0)
         {
+            int timesMerged = 0;
+
             //Instantiate(create());
             create();
             foreach (GameObject shape in shapeMergeList)
             {
-                Destroy(shape);
+                //Handles triple merge
+                if(timesMerged++ < 2) Destroy(shape);
             }
             Debug.Log("MERGE SUCCESS");
 
