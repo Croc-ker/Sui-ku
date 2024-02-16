@@ -4,22 +4,75 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-	[SerializeField] FloatVariable Timer;
-	bool check = false;
+    [SerializeField] private FloatVariable timer;
+    private bool check = false;
 
-	void Update()
-	{
-		if (Time.time >= Timer)
-		{
-			//Debug.Log("Game Over");
-		}
+    void Start()
+    {
+        timer.value = 0;
+    }
 
-	}
-	private void OnCollisionStay2D(Collision2D collision)
-	{
-		if (collision.gameObject.CompareTag("Finish"))
-		{
-			//Timer.value = Time.time + 3;
-		}
-	}
+    private void Update()
+    {
+        if (check && Time.time >= timer)
+        {
+            print("Game Over");
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var sphere = collision.gameObject.GetComponent<Mergeable>();
+
+        if (sphere.dropped)
+        {
+            timer.value = Time.time + 4;
+            check = true;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        print("You Survive");
+        check = false;
+        timer.value = 0;
+    }
+
+    #region CoroutineTry
+    //private float time = 4;
+    //private bool check = false;
+
+    //Coroutine timerCoroutine;
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    var sphere = collision.gameObject.GetComponent<Mergeable>();
+
+    //    if (sphere.dropped)
+    //    {
+    //        check = true;
+    //        timerCoroutine = StartCoroutine(Timer(time));
+    //    }
+    //}
+
+    //public void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    check = false;
+    //}
+
+    //IEnumerator Timer(float time)
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(time);
+
+    //        if (check) print("Game Over");
+    //        else print("You survived");
+
+    //        StopAllCoroutines();
+    //    }
+    //}
+    #endregion
+
 }
