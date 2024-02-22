@@ -16,12 +16,12 @@ public class MultiplierPowerUp : MonoBehaviour
     }
 
 
-    void Update()
+    public void OnUse()
     {
         if(!inUse) StartCoroutine(ScoreMultiplier());
     }
 
-    IEnumerator ScoreMultiplier()
+	IEnumerator ScoreMultiplier()
     {
         multiplier.value = value;
         yield return new WaitForSeconds(time);
