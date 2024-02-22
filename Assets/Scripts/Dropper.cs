@@ -75,20 +75,19 @@ public class Dropper : MonoBehaviour
         }
     }
 
-    public Mergeable create()
+    public void create()
     {
         var shape1 = shapeMergeList[0];
         var shape2 = shapeMergeList[1];
 
         Vector2 avgPos = (shape1.transform.position + shape2.transform.position) / 2;
         int index = int.Parse(shape1.tag);
+        if (index > 10) return;
         GameObject shape = Instantiate(shapes[index], avgPos, Quaternion.identity);
         shape.GetComponent<Rigidbody2D>().gravityScale = 1;
         Mergeable mergeable = shape.GetComponent<Mergeable>();
         mergeable.dropped = true;
         mergeable.transform.position = avgPos;
-        //mergeable.GetComponent<Rigidbody2D>().gravityScale = 1;
-        return mergeable;
     }
     public void drop()
     {
