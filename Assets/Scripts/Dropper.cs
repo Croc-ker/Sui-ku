@@ -6,6 +6,7 @@ public class Dropper : MonoBehaviour
 {
     //this class will handle spawning shapes and moving the spawner.
     public static List<GameObject> shapeMergeList = new List<GameObject>();
+    public static List<GameObject> shapesInPlayList = new List<GameObject>();
     [SerializeField] FloatVariable Timer;
     [SerializeField] FloatVariable Delay;
 
@@ -68,6 +69,7 @@ public class Dropper : MonoBehaviour
             {
                 //Handles triple merge
                 if(timesMerged++ < 2) Destroy(shape);
+                else Dropper.shapesInPlayList.Add(shape);
             }
             Debug.Log("MERGE SUCCESS");
 
@@ -88,6 +90,7 @@ public class Dropper : MonoBehaviour
         Mergeable mergeable = shape.GetComponent<Mergeable>();
         mergeable.dropped = true;
         mergeable.transform.position = avgPos;
+        Dropper.shapesInPlayList.Add(shape);
     }
     public void drop()
     {

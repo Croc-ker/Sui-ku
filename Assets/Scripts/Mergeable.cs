@@ -27,6 +27,7 @@ public class Mergeable : MonoBehaviour
         {
             rb.gravityScale = 1;
             dropped = true;
+            Dropper.shapesInPlayList.Add(gameObject);
         }
     }
 
@@ -39,6 +40,7 @@ public class Mergeable : MonoBehaviour
             Debug.Log("ATTEMPTING MERGE");
             //dropper.addToMerges(gameObject);
             Dropper.shapeMergeList.Add(gameObject);
+            Dropper.shapesInPlayList.Remove(gameObject);
         }
     }
 }

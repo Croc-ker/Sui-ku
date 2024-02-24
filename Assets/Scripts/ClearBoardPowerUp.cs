@@ -6,16 +6,17 @@ public class ClearBoardPowerUp : MonoBehaviour
 {
     [SerializeField] BoolVariable inUse;
 
-
     public void OnUse()
 	{
-		if (!inUse && Dropper.shapeMergeList.Count > 0)
+		if (!inUse && Dropper.shapesInPlayList.Count > 0)
 		{
-			foreach (var shape in Dropper.shapeMergeList)
+			foreach (var shape in Dropper.shapesInPlayList)
 			{
 				Destroy(shape);
+
+				Debug.Log("Shape destroyed");
 			}
-			Dropper.shapeMergeList.Clear();
+			Dropper.shapesInPlayList.Clear();
 		}
 	}
 }

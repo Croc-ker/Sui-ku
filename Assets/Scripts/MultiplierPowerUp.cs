@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class MultiplierPowerUp : MonoBehaviour
 {
@@ -9,13 +10,6 @@ public class MultiplierPowerUp : MonoBehaviour
     [SerializeField] int value;
     [SerializeField] int time;
 
-
-    void Start()
-    {
-        multiplier.value = 1;
-    }
-
-
     public void OnUse()
     {
         if(!inUse) StartCoroutine(ScoreMultiplier());
@@ -23,9 +17,13 @@ public class MultiplierPowerUp : MonoBehaviour
 
 	IEnumerator ScoreMultiplier()
     {
+        inUse.value = true;
         multiplier.value = value;
-        yield return new WaitForSeconds(time);
+		Debug.Log("Multiplier: " + multiplier.value);
+		yield return new WaitForSeconds(time);
         multiplier.value = 1;
-        StopCoroutine(ScoreMultiplier());
+		Debug.Log("Multiplier: " + multiplier.value);
+		inUse.value = false;
+		StopCoroutine(ScoreMultiplier());
     }
 }
