@@ -20,9 +20,13 @@ public class Dropper : MonoBehaviour
     [SerializeField] float moveSpeed = 0.1f;
     [SerializeField] FloatVariable xPos;
 
+    [SerializeField] public IntEvent OnAddScore;
+
     [Header("Misc.")]
     //x is min, y is max
     [SerializeField] Vector2 bounds = new Vector2();
+    [SerializeField] public bool inputEnabled = true;
+
     private void Start()
     {
         Timer.value = 0;
@@ -37,13 +41,10 @@ public class Dropper : MonoBehaviour
         mousePosition.y = transform.position.y;
         mousePosition.x = Mathf.Clamp(mousePosition.x, bounds.x, bounds.y);
         //Debug.Log("Mouse x-axis: " + mousePosition.x.ToString());
-        if (inputEnabled)
-        {
-            transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
-            xPos.value = transform.position.x;
-        }
+        transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
+        xPos.value = transform.position.x;
         #endregion
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && holdingShape)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && holdingShape && inputEnabled)
         {
             drop();
         }
@@ -65,17 +66,19 @@ public class Dropper : MonoBehaviour
         if (shapeMergeList.Count != 0)
         {
             int timesMerged = 0;
-
             //Instantiate(create());
             create();
             foreach (GameObject shape in shapeMergeList)
             {
                 //Handles triple merge
-                if(timesMerged++ < 2) Destroy(shape);
+                if (timesMerged++ < 2)
+                {
+                    OnAddScore.RaiseEvent(int.Parse(shape.tag) * 100);
+                    Destroy(shape);
+                }
                 else Dropper.shapesInPlayList.Add(shape);
             }
             Debug.Log("MERGE SUCCESS");
-
             shapeMergeList.Clear();
         }
     }
