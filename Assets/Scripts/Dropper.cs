@@ -37,8 +37,11 @@ public class Dropper : MonoBehaviour
         mousePosition.y = transform.position.y;
         mousePosition.x = Mathf.Clamp(mousePosition.x, bounds.x, bounds.y);
         //Debug.Log("Mouse x-axis: " + mousePosition.x.ToString());
-        transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
-        xPos.value = transform.position.x;
+        if (inputEnabled)
+        {
+            transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
+            xPos.value = transform.position.x;
+        }
         #endregion
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && holdingShape)
         {
