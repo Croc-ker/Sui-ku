@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
                 GameUI.active = true;
                 Dropper.inputEnabled = true;
                 gametime = 0f;
+                state = State.PLAY;
                 break;
             case State.PLAY:
                 gametime += Time.deltaTime;
