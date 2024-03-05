@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Event OnDeath;
 
     [Header("Misc")]
+    [SerializeField] IntVariable multiplier;
     [SerializeField] int scoreMultiplier;
     [SerializeField] Dropper Dropper;
     private State state = State.TITLE;
@@ -109,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int amount)
     {
-        score = score + amount;
+        score = score + (amount * multiplier);
     }
 
     public void ScoreMult(int amount)

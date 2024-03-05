@@ -5,6 +5,7 @@ using UnityEngine;
 public class Finish : MonoBehaviour
 {
     [SerializeField] private FloatVariable timer;
+    [SerializeField] private BoolEvent loss;
     private bool check = false;
 
     void Start()
@@ -16,7 +17,7 @@ public class Finish : MonoBehaviour
     {
         if (check && Time.time >= timer)
         {
-            print("Game Over");
+            loss?.RaiseEvent(true);
             Destroy(gameObject);
         }
     }
