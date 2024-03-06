@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public enum State
@@ -17,8 +18,10 @@ public class GameManager : MonoBehaviour
     [Header("Interface")]
     [SerializeField] GameObject TitleUI;
     [SerializeField] GameObject GameUI;
+    [SerializeField] GameObject GameOverUI;
     [SerializeField] TMP_Text ScoreUI;
     [SerializeField] TMP_Text GameTimeUI;
+    [SerializeField] TMP_Text GameOverScoreUI;
 
     [Header("Variables")]
     [SerializeField] FloatVariable GameTimeCounter;
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             case State.TITLE:
                 TitleUI.active = true;
+                GameOverUI.active = false;
                 GameUI.active = false;
                 Dropper.inputEnabled = false;
                 break;
@@ -62,6 +66,9 @@ public class GameManager : MonoBehaviour
             case State.PAUSE:
                 break;
             case State.GAME_OVER:
+                GameOverScoreUI.text = ScoreUI.text;
+                GameOverUI.active = true;
+                GameUI.active = false;
                 Dropper.inputEnabled = false;
                 break;
         }
@@ -103,6 +110,17 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void OnGameRestart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OnGamePost()
+    {
+
+    }
+
     public void Death()
     {
         state = State.GAME_OVER;
