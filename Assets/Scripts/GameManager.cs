@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     [Header("Interface")]
     [SerializeField] GameObject TitleUI;
     [SerializeField] GameObject GameUI;
-    [SerializeField] GameObject GameOverUI;
+    //[SerializeField] GameObject GameOverUI;
     [SerializeField] TMP_Text ScoreUI;
     [SerializeField] TMP_Text GameTimeUI;
     [SerializeField] TMP_Text GameOverScoreUI;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         {
             case State.TITLE:
                 TitleUI.active = true;
-                GameOverUI.active = false;
+                //GameOverUI.active = false;
                 GameUI.active = false;
                 Dropper.inputEnabled = false;
                 break;

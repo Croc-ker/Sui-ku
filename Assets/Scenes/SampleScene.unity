@@ -2287,10 +2287,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleUI: {fileID: 1502512649}
   GameUI: {fileID: 1000397569}
-  GameOverUI: {fileID: 0}
   ScoreUI: {fileID: 2114902601}
   GameTimeUI: {fileID: 1839907957}
   GameOverScoreUI: {fileID: 0}
+  Mult2: {fileID: 966082634}
+  Mult3: {fileID: 1908832300}
+  Mult5: {fileID: 1996073942}
+  ClrBoard: {fileID: 2043611438}
   GameTimeCounter: {fileID: 11400000, guid: 6462d2d964362154ab96f97ceb766aad, type: 2}
   Score: {fileID: 11400000, guid: ae7ca9f93c5d08443bd92b8c2e9254dc, type: 2}
   OnAddScore: {fileID: 11400000, guid: 1fa969e0bcaf76f449047162ab32437c, type: 2}
