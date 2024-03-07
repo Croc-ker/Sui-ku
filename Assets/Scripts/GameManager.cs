@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] IntEvent OnAddScore;
     [SerializeField] IntEvent OnUsePower;
     [SerializeField] IntEvent OnScoreMult;
-    [SerializeField] Event OnDeath;
+    [SerializeField] VoidEvent OnLoss;
 
     [Header("Misc")]
     [SerializeField] IntVariable multiplier;
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         OnAddScore.Subscribe(AddScore);
         OnUsePower.Subscribe(RemoveScore);
+        OnLoss.Subscribe(OnGameRestart);
     }
     private void Update()
     {
@@ -71,9 +72,7 @@ public class GameManager : MonoBehaviour
             case State.PAUSE:
                 break;
             case State.GAME_OVER:
-                GameOverScoreUI.text = ScoreUI.text;
-                GameOverUI.active = true;
-                GameUI.active = false;
+                state = State.TITLE;
                 Dropper.inputEnabled = false;
                 break;
         }
