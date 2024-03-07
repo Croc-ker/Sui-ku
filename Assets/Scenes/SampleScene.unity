@@ -1337,7 +1337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &616369004
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2149,6 +2149,7 @@ GameObject:
   - component: {fileID: 966082635}
   - component: {fileID: 966082634}
   - component: {fileID: 966082637}
+  - component: {fileID: 966082638}
   m_Layer: 5
   m_Name: Mult1
   m_TagString: Untagged
@@ -2284,8 +2285,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplier: {fileID: 11400000, guid: a30983124ed645240a1a829d100371a6, type: 2}
   inUse: {fileID: 11400000, guid: 217765b4f9bebe64d97e73b9a5edd2ec, type: 2}
+  UseCost: {fileID: 11400000, guid: 1d2ccfe51acf3ee41b43c06a9328c13b, type: 2}
+  cost: 5000
   value: 2
   time: 6
+--- !u!114 &966082638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966082632}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee21ef460995094282fd4f4d6acb39e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 1d2ccfe51acf3ee41b43c06a9328c13b, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1544750930}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPowerUse
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1000397569
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,9 +3040,14 @@ MonoBehaviour:
   ScoreUI: {fileID: 2114902601}
   GameTimeUI: {fileID: 1839907957}
   GameOverScoreUI: {fileID: 341359297}
+  Mult2: {fileID: 966082634}
+  Mult3: {fileID: 1908832300}
+  Mult5: {fileID: 1996073942}
+  ClrBoard: {fileID: 2043611438}
   GameTimeCounter: {fileID: 11400000, guid: 6462d2d964362154ab96f97ceb766aad, type: 2}
   Score: {fileID: 11400000, guid: ae7ca9f93c5d08443bd92b8c2e9254dc, type: 2}
   OnAddScore: {fileID: 11400000, guid: 1fa969e0bcaf76f449047162ab32437c, type: 2}
+  OnUsePower: {fileID: 11400000, guid: 1d2ccfe51acf3ee41b43c06a9328c13b, type: 2}
   OnScoreMult: {fileID: 0}
   multiplier: {fileID: 11400000, guid: a30983124ed645240a1a829d100371a6, type: 2}
   scoreMultiplier: 0
@@ -3031,7 +3067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1566773845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4377,6 +4413,7 @@ GameObject:
   - component: {fileID: 1908832301}
   - component: {fileID: 1908832300}
   - component: {fileID: 1908832303}
+  - component: {fileID: 1908832304}
   m_Layer: 5
   m_Name: Mult2
   m_TagString: Untagged
@@ -4512,8 +4549,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplier: {fileID: 11400000, guid: a30983124ed645240a1a829d100371a6, type: 2}
   inUse: {fileID: 11400000, guid: 217765b4f9bebe64d97e73b9a5edd2ec, type: 2}
+  UseCost: {fileID: 11400000, guid: 1d2ccfe51acf3ee41b43c06a9328c13b, type: 2}
+  cost: 10000
   value: 3
   time: 6
+--- !u!114 &1908832304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908832298}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee21ef460995094282fd4f4d6acb39e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 1d2ccfe51acf3ee41b43c06a9328c13b, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1544750930}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPowerUse
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1975335884
 GameObject:
   m_ObjectHideFlags: 0
@@ -4561,6 +4628,7 @@ GameObject:
   - component: {fileID: 1996073943}
   - component: {fileID: 1996073942}
   - component: {fileID: 1996073945}
+  - component: {fileID: 1996073946}
   m_Layer: 5
   m_Name: Mult3
   m_TagString: Untagged
@@ -4696,8 +4764,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplier: {fileID: 11400000, guid: a30983124ed645240a1a829d100371a6, type: 2}
   inUse: {fileID: 11400000, guid: 217765b4f9bebe64d97e73b9a5edd2ec, type: 2}
+  UseCost: {fileID: 11400000, guid: 1d2ccfe51acf3ee41b43c06a9328c13b, type: 2}
+  cost: 20000
   value: 5
   time: 6
+--- !u!114 &1996073946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996073940}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee21ef460995094282fd4f4d6acb39e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 1d2ccfe51acf3ee41b43c06a9328c13b, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1544750930}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPowerUse
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 20000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2043611436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4711,6 +4809,7 @@ GameObject:
   - component: {fileID: 2043611439}
   - component: {fileID: 2043611438}
   - component: {fileID: 2043611441}
+  - component: {fileID: 2043611442}
   m_Layer: 5
   m_Name: ClearGoku
   m_TagString: Untagged
@@ -4845,6 +4944,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inUse: {fileID: 11400000, guid: 217765b4f9bebe64d97e73b9a5edd2ec, type: 2}
+  UseCost: {fileID: 11400000, guid: 1d2ccfe51acf3ee41b43c06a9328c13b, type: 2}
+  cost: 50000
+--- !u!114 &2043611442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043611436}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee21ef460995094282fd4f4d6acb39e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 1d2ccfe51acf3ee41b43c06a9328c13b, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1544750930}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPowerUse
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 50000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2091474225
 GameObject:
   m_ObjectHideFlags: 0

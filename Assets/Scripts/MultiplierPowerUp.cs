@@ -7,12 +7,18 @@ public class MultiplierPowerUp : MonoBehaviour
 {
     [SerializeField] IntVariable multiplier;
     [SerializeField] BoolVariable inUse;
+    [SerializeField] IntEvent UseCost;
+    [SerializeField] int cost;
     [SerializeField] int value;
     [SerializeField] int time;
 
     public void OnUse()
     {
-        if(!inUse) StartCoroutine(ScoreMultiplier());
+        if(!inUse)
+        {
+            UseCost?.RaiseEvent(cost);
+            StartCoroutine(ScoreMultiplier());
+        }
     }
 
 	IEnumerator ScoreMultiplier()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public enum State
 {
@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text ScoreUI;
     [SerializeField] TMP_Text GameTimeUI;
     [SerializeField] TMP_Text GameOverScoreUI;
+    [SerializeField] Button Mult2;
+    [SerializeField] Button Mult3;
+    [SerializeField] Button Mult5;
+    [SerializeField] Button ClrBoard;
 
     [Header("Variables")]
     [SerializeField] FloatVariable GameTimeCounter;
@@ -29,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] IntEvent OnAddScore;
+    [SerializeField] IntEvent OnUsePower;
     [SerializeField] IntEvent OnScoreMult;
     [SerializeField] Event OnDeath;
 
@@ -41,10 +46,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         OnAddScore.Subscribe(AddScore);
+        OnUsePower.Subscribe(RemoveScore);
     }
     private void Update()
     {
-
         switch (state)
         {
             case State.TITLE:
@@ -72,6 +77,17 @@ public class GameManager : MonoBehaviour
                 Dropper.inputEnabled = false;
                 break;
         }
+
+        #region UGLY_BUTTON_LOGIC
+        if (score >= 5000) Mult2.interactable = true;
+        else Mult2.interactable = false;
+        if (score >= 10000) Mult3.interactable = true;
+        else Mult3.interactable = false;
+        if (score >= 30000) Mult5.interactable = true;
+        else Mult5.interactable = false;
+        if (score >= 60000) ClrBoard.interactable = true;
+        else ClrBoard.interactable = false;
+        #endregion
     }
 
     public int score
@@ -126,9 +142,19 @@ public class GameManager : MonoBehaviour
         state = State.GAME_OVER;
     }
 
+    public void OnPowerUse(int cost)
+    {
+        score -= cost;
+    }
+
     public void AddScore(int amount)
     {
         score = score + (amount * multiplier);
+    }
+
+    public void RemoveScore(int amount)
+    {
+        score = score - amount;
     }
 
     public void ScoreMult(int amount)
