@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         OnAddScore.Subscribe(AddScore);
-        OnLoss.Subscribe(Death);
+        OnLoss.Subscribe(OnGameRestart);
     }
     private void Update()
     {
